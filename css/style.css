@@ -1,0 +1,80 @@
+body {
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #161616; /* Default background color */
+    transition: background-color 0.5s; /* Smooth transition for background color change */
+}
+
+.candle-container {
+    text-align: center;
+}
+
+.candle {
+    width: 150px;
+    height: 300px;
+    background-color: #e6e6e6; /* Candle color */
+    border: 5px solid #0e193b; /* Border color */
+    border-radius: 20px; /* Rounded corners */
+    position: relative;
+}
+
+.base {
+    width: 300px; /* Base width */
+    height: 20px; /* Base height */
+    background-color: #000000; /* Base color */
+    position: absolute;
+    bottom: -20px; /* Align base to bottom of the candle */
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 8px 8px 0 0; /* Rounded corners only on top */
+}
+
+.lead {
+    width: 10px;
+    height: 40px;
+    background-color: #0e193b; /* Lead color */
+    position: absolute;
+    top: -40px; /* Position lead above candle */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.flame {
+    width: 60px; /* 1/4 of candle width */
+    height: 60px; /* 1/4 of candle height */
+    background-color: #ffdb58; /* Flame color (initial yellow) */
+    border: 1px solid #ffdb58; /* Flame border */
+    position: absolute;
+    bottom: 110%; /* Position flame higher */
+    left: 40px;
+    transform: translateX(-50%);
+    border-radius: 30px 0 30px 30px;
+    transform: rotate(-45deg);
+    display: none;
+    animation: flameColorChange 1s infinite alternate; /* Apply color change animation */
+    animation: flameAppear 2s forwards; /* Apply flame appearance animation */
+}
+
+.candle:hover .flame {
+    display: block;
+}
+
+.candle:hover .container {
+    background-color: #ece1ca; /* Lightened background color when container is hovered */
+}
+
+@keyframes flameColorChange {
+    0% { background-color: #ffdb58; } /* Start with yellow */
+    100% { background-color: #ff7f50; } /* End with reddish */
+}
+
+@keyframes flameAppear {
+    0% { opacity: 0; } /* Start with flame hidden */
+    100% { opacity: 1; } /* End with fully visible flame */
+}
